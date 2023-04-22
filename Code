@@ -273,14 +273,6 @@ pred_45 <- predict(xgb, as.matrix(predictors_test_45))
 auc(test_45$MALE, pred_45)
 ci.auc(test_45$MALE, pred_45)
 
-pred_tib_angio <- predict(xgb, as.matrix(predictors_test_tib_angio))
-auc(test_tib_angio$MALE, pred_tib_angio)
-ci.auc(test_tib_angio$MALE, pred_tib_angio)
-
-pred_tib_ather <- predict(xgb, as.matrix(predictors_test_tib_ather))
-auc(test_tib_ather$MALE, pred_tib_ather)
-ci.auc(test_tib_ather$MALE, pred_tib_ather)
-
 pred_67 <- predict(xgb, as.matrix(predictors_test_67))
 auc(test_67$MALE, pred_67)
 ci.auc(test_67$MALE, pred_67)
