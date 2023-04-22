@@ -1,4 +1,4 @@
-#R version 4.2.3
+#R version 4.3.0
 #Load NSQIP data (available with approval through ACS https://www.facs.org/quality-programs/data-and-registries/acs-nsqip/participant-use-data-file/)
 library(readr)
 data <- read_csv("AIE_NSQIP_data.csv")
