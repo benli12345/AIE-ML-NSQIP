@@ -281,16 +281,16 @@ perf_1 <- prediction(pred_1, test_1$MALE)
 perf_1 <- performance(perf_1, "tpr","fpr)
 
 perf_2 <- prediction(pred_2, test_2$MALE)
-perf_2 <- performance(perf_2, "tpr","fpr)
+perf_2 <- performance(perf_2, "tpr","fpr")
 
 perf_3 <- prediction(pred_3, test_3$MALE)
-perf_3 <- performance(perf_3, "tpr","fpr)
+perf_3 <- performance(perf_3, "tpr","fpr")
 
 perf_45 <- prediction(pred_45, test_45$MALE)
-perf_45 <- performance(perf_45, "tpr","fpr)
+perf_45 <- performance(perf_45, "tpr","fpr")
 
 perf_67 <- prediction(pred_67, test_67$MALE)
-perf_67 <- performance(perf_67, "tpr","fpr)
+perf_67 <- performance(perf_67, "tpr","fpr")
 
 plot(perf_1)
 plot(perf_2, add = TRUE, col = 'blue')
