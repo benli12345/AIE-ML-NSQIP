@@ -258,7 +258,7 @@ predictors_test_45 <- test_45 %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW
 predictors_test_67 <- test_67 %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, PHYSHIGHRISK, ASPIRIN, STATIN, BETAB, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, LEE_HEMO, ANATHIGHRISK, CONCUR_MIN_AMP, CONCUR_INFRA_ENDO, AIE_SYMPT, AIE_PROC, URGENCY, ASACLAS, SURGSPEC)
 
 pred_1 <- predict(xgb, as.matrix(predictors_test_1))
-auc(test_1$MALE, pred_f1)
+auc(test_1$MALE, pred_1)
 ci.auc(test_1$MALE, pred_1)
 
 pred_2 <- predict(xgb, as.matrix(predictors_test_2))
