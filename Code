@@ -324,8 +324,8 @@ plot(perf_elective, add = TRUE, col = 'blue')
 abline(a=0,b=1)
 
 #Subgroup analysis based on concurrent infrainguinal endovascular resvascularization
-test_infra <- test[test$CONCUR_INFRA_ENDO==0, ]
-test_noinfra <- test[test$CONCUR_INFRA_ENDO==1, ]
+test_infra <- test[test$CONCUR_INFRA_ENDO==1, ]
+test_noinfra <- test[test$CONCUR_INFRA_ENDO==0, ]
 predictors_test_infra <- test_infra %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, PHYSHIGHRISK, ASPIRIN, STATIN, BETAB, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, LEE_HEMO, ANATHIGHRISK, CONCUR_MIN_AMP, CONCUR_INFRA_ENDO, AIE_SYMPT, AIE_PROC, URGENCY, ASACLAS, SURGSPEC)
 predictors_test_noinfra <- test_noinfra %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, PHYSHIGHRISK, ASPIRIN, STATIN, BETAB, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, LEE_HEMO, ANATHIGHRISK, CONCUR_MIN_AMP, CONCUR_INFRA_ENDO, AIE_SYMPT, AIE_PROC, URGENCY, ASACLAS, SURGSPEC)
 
