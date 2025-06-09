@@ -323,6 +323,30 @@ plot(perf_urgent)
 plot(perf_elective, add = TRUE, col = 'blue')
 abline(a=0,b=1)
 
+#Subgroup analysis based on concurrent infrainguinal endovascular resvascularization
+test_infra <- test[test$CONCUR_INFRA_ENDO==0, ]
+test_noinfra <- test[test$CONCUR_INFRA_ENDO==1, ]
+predictors_test_infra <- test_infra %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, PHYSHIGHRISK, ASPIRIN, STATIN, BETAB, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, LEE_HEMO, ANATHIGHRISK, CONCUR_MIN_AMP, CONCUR_INFRA_ENDO, AIE_SYMPT, AIE_PROC, URGENCY, ASACLAS, SURGSPEC)
+predictors_test_noinfra <- test_noinfra %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, PHYSHIGHRISK, ASPIRIN, STATIN, BETAB, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, LEE_HEMO, ANATHIGHRISK, CONCUR_MIN_AMP, CONCUR_INFRA_ENDO, AIE_SYMPT, AIE_PROC, URGENCY, ASACLAS, SURGSPEC)
+
+pred_infra <- predict(XGB, as.matrix(predictors_test_infra))
+auc(test_infra$MALE, pred_infra)
+ci.auc(test_infra$MALE, pred_infra)
+
+pred_noinfra <- predict(XGB, as.matrix(predictors_test_noinfra))
+auc(test_noinfra$MALE, pred_noinfra)
+ci.auc(test_noinfra$MALE, pred_noinfra)
+
+perf_infra <- prediction(pred_infra, test_infra$MALE)
+perf_infra <- performance(perf_infra, "tpr", "fpr")
+
+perf_noinfra <- prediction(pred_noinfra, test_noinfra$MALE)
+perf_noinfra <- performance(perf_noinfra, "tpr", "fpr")
+
+plot(perf_infra)
+plot(perf_noinfra, add = TRUE, col = 'blue')
+abline(a=0,b=1)
+
 #Train and evaluate XGBoost for predicting secondary outcomes
 
 XGB_loss_pat <- xgboost(data = as.matrix(predictors_train), label = as.numeric(train$loss_pat), nrounds = 200, verbose = TRUE, objective = 'binary:logistic', eval_metric = 'auc', max_depth = 3, eta = 0.3, gamma = 0, colsample_bytree = 0.6, min_child_weight = 1, subsample = 0.9) #hyperparameters chosen based on above grid search and cross validation
